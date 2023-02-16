@@ -16,12 +16,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   FutureOr<void> _goToLoginPageEvent(
     AuthEventGoToLoginPage event,
     Emitter<AuthState> emit,
-  ) {}
+  ) {
+    emit(const AuthStateLoginPage());
+  }
 
   FutureOr<void> _goToRegisterPageEvent(
     AuthEventGoToRegisterPage event,
     Emitter<AuthState> emit,
-  ) {}
+  ) {
+    emit(const AuthStateRegisterPage());
+  }
 
   FutureOr<void> _loginEvent(
     AuthEventLogin event,

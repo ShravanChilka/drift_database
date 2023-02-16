@@ -1,4 +1,7 @@
+import 'package:drift_database/features/auth/bloc/auth_bloc.dart';
+import 'package:drift_database/features/auth/bloc/auth_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -54,7 +57,12 @@ class _RegisterPageState extends State<RegisterPage> {
           const SizedBox(height: 16),
           Center(
             child: FilledButton(
-              onPressed: () {},
+              onPressed: () => context.read<AuthBloc>().add(
+                    AuthEventLogin(
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                    ),
+                  ),
               child: const Text('Login'),
             ),
           ),
@@ -64,7 +72,9 @@ class _RegisterPageState extends State<RegisterPage> {
             children: [
               const Text('Already registered, '),
               TextButton(
-                onPressed: () {},
+                onPressed: () => context.read<AuthBloc>().add(
+                      const AuthEventGoToLoginPage(),
+                    ),
                 child: const Text('Login'),
               )
             ],
